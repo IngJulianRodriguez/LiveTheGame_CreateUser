@@ -34,7 +34,7 @@ public class CreateUserApplication {
 	}
 
 	private ApiInfo apiInfo() {
-		return new ApiInfoBuilder().title("Live The Game api services")
+		return new ApiInfoBuilder().title("Live The Game create user api services")
 				.description("")
 				.termsOfServiceUrl("")
 				.contact(new Contact("Julian Rodriguez", "", ""))
@@ -49,7 +49,7 @@ public class CreateUserApplication {
 	@Bean
 	public Docket petApi() {
 		return new Docket(DocumentationType.SWAGGER_2)
-				.groupName("livethegame-apis")
+				.groupName("createuser-apis")
 				.apiInfo(apiInfo())
 				//set up JWT input
 				.securityContexts(Arrays.asList(securityContext()))
