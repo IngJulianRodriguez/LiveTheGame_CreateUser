@@ -4,12 +4,10 @@ import com.livethegame.CreateUser.common.UserCredentialsRequestMapper;
 import com.livethegame.CreateUser.common.UserResponseMapper;
 import com.livethegame.CreateUser.dto.UserCredentialsRequest;
 import com.livethegame.CreateUser.dto.UserResponse;
-import com.livethegame.CreateUser.entities.User;
+import com.livethegame.CreateUser.entities.Users;
 import com.livethegame.CreateUser.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class UserService {
@@ -21,10 +19,19 @@ public class UserService {
     @Autowired
     UserCredentialsRequestMapper userCredentialsRequestMapper;
 
-    public UserResponse CreateUser(UserCredentialsRequest userCredentialsRequest){
-        User UserCredentialsRequestToUser = userCredentialsRequestMapper.UserCredentialsRequestToUser(userCredentialsRequest);
-        User save = userRepository.save(UserCredentialsRequestToUser);
+    public UserResponse createUser(UserCredentialsRequest userCredentialsRequest){
+        Users userCredentialsRequestToUsers = userCredentialsRequestMapper.UserCredentialsRequestToUser(userCredentialsRequest);
+        Users save = userRepository.save(userCredentialsRequestToUsers);
         UserResponse UserToUserResponse = userResponseMapper.UserToUserResponse(save);
         return UserToUserResponse;
     }
+    public boolean isTheEmailRegistered(String email){
+        try {
+            Users users = userRepository.findByEmail(email);
+            return users != null;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
 }

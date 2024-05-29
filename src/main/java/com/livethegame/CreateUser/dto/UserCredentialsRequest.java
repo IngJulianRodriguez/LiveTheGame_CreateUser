@@ -1,5 +1,6 @@
 package com.livethegame.CreateUser.dto;
 
+import com.livethegame.CreateUser.Utils.Validator;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -33,5 +34,10 @@ public class UserCredentialsRequest {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public boolean isValidData(){
+        return Validator.validate(getEmail())
+            && !getPassword().isEmpty();
     }
 }

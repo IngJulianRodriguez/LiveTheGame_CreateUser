@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -26,6 +27,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
 @EnableSwagger2
 @EnableWebMvc
+@EnableAsync
 @ComponentScan(basePackages = "com.livethegame.CreateUser")
 public class CreateUserApplication {
 
