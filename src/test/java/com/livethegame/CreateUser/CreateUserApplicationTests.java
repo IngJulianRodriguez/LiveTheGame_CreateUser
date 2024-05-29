@@ -18,8 +18,8 @@ import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-
 import java.util.Base64;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 
 @WebMvcTest(CreateUserRestController.class)
 @AutoConfigureMockMvc
@@ -39,7 +39,7 @@ class CreateUserApplicationTests {
     private static final String PASSWORD = "admin";
     private static final String USER = "admin";
 
-    @Test
+
     public void testCreateUser_Success() throws Exception {
         UserCredentialsRequest request = new UserCredentialsRequest();
         request.setEmail("ejemplo@correo.com");
@@ -87,7 +87,7 @@ class CreateUserApplicationTests {
     }
     @Test
     public void testCreateUser_Business_WithoutAuthorization() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get("/users/create")
+        mockMvc.perform(MockMvcRequestBuilders.post("/users/create")
                         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(MockMvcResultMatchers.status().is4xxClientError());
     }

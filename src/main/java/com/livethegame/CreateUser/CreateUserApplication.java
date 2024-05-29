@@ -27,7 +27,6 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication(exclude = { SecurityAutoConfiguration.class })
 @EnableSwagger2
 @EnableWebMvc
-@EnableAsync
 @ComponentScan(basePackages = "com.livethegame.CreateUser")
 public class CreateUserApplication {
 
